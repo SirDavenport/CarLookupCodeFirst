@@ -1,0 +1,58 @@
+﻿@model CarLookupCodeFirst.Core.Models.Car
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Car</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Maker)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Maker)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BodyTypeNames)
+        </dt>
+        <dd>
+            @{
+                List<SelectListItem> listItems = new List<SelectListItem>();
+                foreach (var item in Model.BodyTypeNames)
+                {
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = item,
+                        Value = item
+                    });
+                }
+            }
+            @Html.DropDownListFor(model => model.BodyTypeNames, listItems, "--Body Types")
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
