@@ -1,9 +1,6 @@
 ﻿using CarLookupCodeFirst.Services.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CarLookupCodeFirst.Core.Models;
 using CarLookupCodeFirst.Data.DAL;
 using System.Data.Entity;
