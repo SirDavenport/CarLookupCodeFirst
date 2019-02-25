@@ -6,12 +6,18 @@ using CarLookupCodeFirst.Core.Models;
 using CarLookupCodeFirst.Data.DAL;
 using System.Collections.Generic;
 using CarLookupCodeFirst.Services;
+using CarLookupCodeFirst.Services.Interfaces;
 
 namespace CarLookupCodeFirst.Web.Controllers
 {
     public class CarController : Controller
     {
-        private CarService _carService = new CarService();
+        private ICarService _carService;
+
+        public CarController(ICarService carService)
+        {
+            _carService = carService;
+        }
 
         // GET: Car/Create
         public ActionResult Create()
@@ -108,16 +114,6 @@ namespace CarLookupCodeFirst.Web.Controllers
         public ActionResult Index()
         {
             return View(_carService.GetCars());
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                CarLookupContext db = _carService.GetDb();
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

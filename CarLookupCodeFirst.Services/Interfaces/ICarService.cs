@@ -19,7 +19,5 @@ namespace CarLookupCodeFirst.Services.Interfaces
         Car GetCar(int? id);
 
         ICollection<Car> GetCars();
-
-        CarLookupContext GetDb();
     }
 }

@@ -9,7 +9,12 @@ namespace CarLookupCodeFirst.Services
 {
     public class CarService : ICarService
     {
-        private CarLookupContext db = new CarLookupContext();
+        private CarLookupContext db;
+
+        public CarService(CarLookupContext context)
+        {
+            db = context;
+        }
 
         public string AddCar(Car car)
         {
@@ -51,11 +56,6 @@ namespace CarLookupCodeFirst.Services
         public ICollection<Car> GetCars()
         {
             return db.Cars.ToList();
-        }
-
-        public CarLookupContext GetDb()
-        {
-            return db;
         }
     }
 }

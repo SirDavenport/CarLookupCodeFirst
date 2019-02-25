@@ -55,7 +55,6 @@
   <ItemGroup>
     <Compile Include="DAL\CarLookupContext.cs" />
     <Compile Include="DAL\CarLookupInitializer.cs" />
-    <Compile Include="DAL\Interfaces\ICarLookupContext.cs" />
     <Compile Include="Ioc\IocModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
