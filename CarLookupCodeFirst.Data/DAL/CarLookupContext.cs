@@ -1,11 +1,11 @@
 ﻿using CarLookupCodeFirst.Data.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System;
+using CarLookupCodeFirst.Data.DAL.Interfaces;
 
 namespace CarLookupCodeFirst.Data.DAL
 {
-    public class CarLookupContext : DbContext
+    public class CarLookupContext : DbContext, ICarLookupContext
     {
         public CarLookupContext() : base("CarLookupContext")
         {

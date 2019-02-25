@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using CarLookupCodeFirst.Data.Models;
 using CarLookupCodeFirst.Data.Repository.Interfaces;
+using CarLookupCodeFirst.Core.Models;
 
 namespace CarLookupCodeFirst.Services
 {
@@ -36,7 +37,6 @@ namespace CarLookupCodeFirst.Services
 
         public ICollection<Car> GetCars()
         {
-            //return db.Cars.ToList();
             return _carRepository.GetAll();
         }
     }

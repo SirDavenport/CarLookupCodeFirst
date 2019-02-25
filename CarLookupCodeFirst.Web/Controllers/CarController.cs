@@ -95,15 +95,16 @@ namespace CarLookupCodeFirst.Web.Controllers
             return View(car);
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Maker,Model,Year")] Car car)
+        public ActionResult Edit([Bind(Include = "ID, Maker,Model,Year")] Car car)
         {
             if (ModelState.IsValid)
             {
                 _carService.EditCar(car);
                 return RedirectToAction("Index");
             }
+
             return View(car);
         }
 

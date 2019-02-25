@@ -1,6 +1,7 @@
 ﻿using AutoMapper.QueryableExtensions;
 using CarLookupCodeFirst.Core.Models;
 using CarLookupCodeFirst.Data.DAL;
+using CarLookupCodeFirst.Data.DAL.Interfaces;
 using CarLookupCodeFirst.Data.Models;
 using CarLookupCodeFirst.Data.Repository.Interfaces;
 using System;
@@ -14,17 +15,19 @@ namespace CarLookupCodeFirst.Data.Repository
 {
     public class CarRepository : ICarRepository
     {
-        private CarLookupContext _db;
+        private ICarLookupContext _db;
+        private IUnitOfWork _unitOfWork;
 
-        public CarRepository(CarLookupContext db)
+        public CarRepository(ICarLookupContext db, IUnitOfWork unitOfWork)
         {
             _db = db;
+            _unitOfWork = unitOfWork;
         }
 
         public string AddCar(Car car)
         {
             _db.Cars.Add(car);
-            _db.SaveChanges();
+            _unitOfWork.SaveChanges();
             return "Created";
         }
 
@@ -32,20 +35,23 @@ namespace CarLookupCodeFirst.Data.Repository
         {
             Car car = _db.Cars.Find(id);
             _db.Cars.Remove(car);
-            _db.SaveChanges();
+            _unitOfWork.SaveChanges();
             return "Deleted";
         }
 
         public string EditCar(Car car)
         {
-            _db.Entry(car).State = EntityState.Modified;
-            _db.SaveChanges();
+            Car originalCar = _db.Cars.Find(car.ID);
+            originalCar.Maker = car.Maker;
+            originalCar.Model = car.Model;
+            originalCar.Year = car.Year;
+            _unitOfWork.SaveChanges();
             return "Edited";
         }
 
         public ICollection<Car> GetAll()
         {
-            return _db.Cars.ToList<Car>();
+            return _db.Cars.ToList();
         }
 
         public Car GetCar(int? id)
@@ -59,6 +65,7 @@ namespace CarLookupCodeFirst.Data.Repository
                                       join bb in _db.BodyTypes on cb.BodyTypeID equals bb.ID
                                       where cb.CarID == id
                                       select bb.Name).ToList<string>();
+
             car.BodyTypeNames = bodyTypes;
             return car;
         }
