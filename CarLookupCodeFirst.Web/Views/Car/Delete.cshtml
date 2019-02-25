@@ -1,4 +1,4 @@
-﻿@model CarLookupCodeFirst.Core.Models.Car
+﻿@model CarLookupCodeFirst.Data.Models.Car
 
 @{
     ViewBag.Title = "Delete";
@@ -34,10 +34,10 @@
         <dd>
             @Html.DisplayFor(model => model.Year)
         </dd>
-
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

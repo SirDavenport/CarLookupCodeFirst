@@ -1,4 +1,4 @@
-﻿using CarLookupCodeFirst.Core.Models;
+﻿using CarLookupCodeFirst.Data.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System;

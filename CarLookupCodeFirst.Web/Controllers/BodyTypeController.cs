@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using CarLookupCodeFirst.Core.Models;
+using CarLookupCodeFirst.Data.Models;
 using CarLookupCodeFirst.Data.DAL;
 
 namespace CarLookupCodeFirst.Web.Controllers
@@ -15,27 +15,6 @@ namespace CarLookupCodeFirst.Web.Controllers
     {
         private CarLookupContext db = new CarLookupContext();
 
-        // GET: BodyType
-        public ActionResult Index()
-        {
-            return View(db.BodyTypes.ToList());
-        }
-
-        // GET: BodyType/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            BodyType bodyType = db.BodyTypes.Find(id);
-            if (bodyType == null)
-            {
-                return HttpNotFound();
-            }
-            return View(bodyType);
-        }
-
         // GET: BodyType/Create
         public ActionResult Create()
         {
@@ -43,7 +22,7 @@ namespace CarLookupCodeFirst.Web.Controllers
         }
 
         // POST: BodyType/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -56,37 +35,6 @@ namespace CarLookupCodeFirst.Web.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(bodyType);
-        }
-
-        // GET: BodyType/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            BodyType bodyType = db.BodyTypes.Find(id);
-            if (bodyType == null)
-            {
-                return HttpNotFound();
-            }
-            return View(bodyType);
-        }
-
-        // POST: BodyType/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name")] BodyType bodyType)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(bodyType).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
             return View(bodyType);
         }
 
@@ -114,6 +62,58 @@ namespace CarLookupCodeFirst.Web.Controllers
             db.BodyTypes.Remove(bodyType);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        // GET: BodyType/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BodyType bodyType = db.BodyTypes.Find(id);
+            if (bodyType == null)
+            {
+                return HttpNotFound();
+            }
+            return View(bodyType);
+        }
+
+        // GET: BodyType/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BodyType bodyType = db.BodyTypes.Find(id);
+            if (bodyType == null)
+            {
+                return HttpNotFound();
+            }
+            return View(bodyType);
+        }
+
+        // POST: BodyType/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ID,Name")] BodyType bodyType)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(bodyType).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(bodyType);
+        }
+
+        // GET: BodyType
+        public ActionResult Index()
+        {
+            return View(db.BodyTypes.ToList());
         }
 
         protected override void Dispose(bool disposing)

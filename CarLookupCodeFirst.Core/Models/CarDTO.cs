@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace CarLookupCodeFirst.Core.Models
 {
-    public class Car
+    public class CarDTO
     {
         public List<string> BodyTypeNames { get; set; }
         public int ID { get; set; }

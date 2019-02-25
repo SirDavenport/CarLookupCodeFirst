@@ -1,4 +1,4 @@
-﻿using CarLookupCodeFirst.Core.Models;
+﻿using CarLookupCodeFirst.Data.Models;
 using CarLookupCodeFirst.Data.DAL;
 using System;
 using System.Collections.Generic;

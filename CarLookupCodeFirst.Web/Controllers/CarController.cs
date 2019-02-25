@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using CarLookupCodeFirst.Core.Models;
+using CarLookupCodeFirst.Data.Models;
 using CarLookupCodeFirst.Data.DAL;
 using System.Collections.Generic;
 using CarLookupCodeFirst.Services;
@@ -95,9 +95,6 @@ namespace CarLookupCodeFirst.Web.Controllers
             return View(car);
         }
 
-        // POST: Car/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Maker,Model,Year")] Car car)

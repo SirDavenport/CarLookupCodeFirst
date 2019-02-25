@@ -1,61 +1,43 @@
 ﻿using CarLookupCodeFirst.Services.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
-using CarLookupCodeFirst.Core.Models;
-using CarLookupCodeFirst.Data.DAL;
-using System.Data.Entity;
+using CarLookupCodeFirst.Data.Models;
+using CarLookupCodeFirst.Data.Repository.Interfaces;
 
 namespace CarLookupCodeFirst.Services
 {
     public class CarService : ICarService
     {
-        private CarLookupContext db;
+        private ICarRepository _carRepository;
 
-        public CarService(CarLookupContext context)
+        public CarService(ICarRepository carRepository)
         {
-            db = context;
+            _carRepository = carRepository;
         }
 
         public string AddCar(Car car)
         {
-            db.Cars.Add(car);
-            db.SaveChanges();
-            return "Created";
+            return _carRepository.AddCar(car);
         }
 
         public string DeleteCar(int id)
         {
-            Car car = db.Cars.Find(id);
-            db.Cars.Remove(car);
-            db.SaveChanges();
-            return "Deleted";
+            return _carRepository.DeleteCar(id);
         }
 
         public string EditCar(Car car)
         {
-            db.Entry(car).State = EntityState.Modified;
-            db.SaveChanges();
-            return "Edited";
+            return _carRepository.EditCar(car);
         }
 
         public Car GetCar(int? id)
         {
-            Car car = db.Cars.Find(id);
-            if (car == null)
-            {
-                return null;
-            }
-            List<string> bodyTypes = (from cb in db.CarBodyTypes
-                                      join bb in db.BodyTypes on cb.BodyTypeID equals bb.ID
-                                      where cb.CarID == id
-                                      select bb.Name).ToList<string>();
-            car.BodyTypeNames = bodyTypes;
-            return car;
+            return _carRepository.GetCar(id);
         }
 
         public ICollection<Car> GetCars()
         {
-            return db.Cars.ToList();
+            //return db.Cars.ToList();
+            return _carRepository.GetAll();
         }
     }
 }

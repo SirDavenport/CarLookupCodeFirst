@@ -1,10 +1,7 @@
 ﻿using Autofac;
 using CarLookupCodeFirst.Data.DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CarLookupCodeFirst.Data.Repository;
+using CarLookupCodeFirst.Data.Repository.Interfaces;
 
 namespace CarLookupCodeFirst.Data.Ioc
 {
@@ -14,6 +11,7 @@ namespace CarLookupCodeFirst.Data.Ioc
         {
             builder.RegisterModule(new Core.Ioc.IocModule());
             builder.RegisterType<CarLookupContext>().InstancePerLifetimeScope();
+            builder.RegisterType<CarRepository>().As<ICarRepository>();
         }
     }
 }

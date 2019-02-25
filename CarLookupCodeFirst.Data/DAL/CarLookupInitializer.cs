@@ -1,4 +1,4 @@
-﻿using CarLookupCodeFirst.Core.Models;
+﻿using CarLookupCodeFirst.Data.Models;
 using System.Collections.Generic;
 
 namespace CarLookupCodeFirst.Data.DAL

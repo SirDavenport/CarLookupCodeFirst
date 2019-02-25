@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CarLookupCodeFirst.Core.Models
+namespace CarLookupCodeFirst.Data.Models
 {
     public class CarBodyType
     {

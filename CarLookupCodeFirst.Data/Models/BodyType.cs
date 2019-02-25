@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace CarLookupCodeFirst.Core.Models
+namespace CarLookupCodeFirst.Data.Models
 {
     public class BodyType
     {
