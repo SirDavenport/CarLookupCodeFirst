@@ -52,5 +52,10 @@ namespace CarLookupCodeFirst.Services
         {
             return db.Cars.ToList();
         }
+
+        public CarLookupContext GetDb()
+        {
+            return db;
+        }
     }
 }

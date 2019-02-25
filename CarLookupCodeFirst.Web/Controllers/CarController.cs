@@ -12,7 +12,6 @@ namespace CarLookupCodeFirst.Web.Controllers
     public class CarController : Controller
     {
         private CarService _carService = new CarService();
-        private CarLookupContext db = new CarLookupContext();
 
         // GET: Car/Create
         public ActionResult Create()
@@ -115,6 +114,7 @@ namespace CarLookupCodeFirst.Web.Controllers
         {
             if (disposing)
             {
+                CarLookupContext db = _carService.GetDb();
                 db.Dispose();
             }
             base.Dispose(disposing);
