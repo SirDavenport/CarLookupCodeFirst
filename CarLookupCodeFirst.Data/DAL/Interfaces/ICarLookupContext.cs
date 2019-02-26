@@ -11,7 +11,6 @@ namespace CarLookupCodeFirst.Data.DAL.Interfaces
     public interface ICarLookupContext : IDisposable
     {
         DbSet<BodyType> BodyTypes { get; set; }
-        DbSet<CarBodyType> CarBodyTypes { get; set; }
         DbSet<Car> Cars { get; set; }
 
         int SaveChanges();

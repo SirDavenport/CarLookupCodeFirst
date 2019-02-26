@@ -12,7 +12,6 @@ namespace CarLookupCodeFirst.Data.DAL
         }
 
         public DbSet<BodyType> BodyTypes { get; set; }
-        public DbSet<CarBodyType> CarBodyTypes { get; set; }
         public DbSet<Car> Cars { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

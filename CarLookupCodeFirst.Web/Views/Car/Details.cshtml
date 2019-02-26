@@ -34,21 +34,15 @@
             @Html.DisplayFor(model => model.Year)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.BodyTypeNames)
+            @Html.DisplayNameFor(model => model.BodyTypes)
         </dt>
         <dd>
-            @{
-                List<SelectListItem> listItems = new List<SelectListItem>();
-                foreach (var item in Model.BodyTypeNames)
+            <ul>
+                @foreach (var item in Model.BodyTypes)
                 {
-                    listItems.Add(new SelectListItem
-                    {
-                        Text = item,
-                        Value = item
-                    });
+                    <li>@Html.DisplayFor(modelItem => item.Name)</li>
                 }
-            }
-            @Html.DropDownListFor(model => model.BodyTypeNames, listItems, "--Body Types")
+            </ul>
         </dd>
     </dl>
 </div>

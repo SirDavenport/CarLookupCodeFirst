@@ -61,12 +61,6 @@ namespace CarLookupCodeFirst.Data.Repository
             {
                 return null;
             }
-            List<string> bodyTypes = (from cb in _db.CarBodyTypes
-                                      join bb in _db.BodyTypes on cb.BodyTypeID equals bb.ID
-                                      where cb.CarID == id
-                                      select bb.Name).ToList<string>();
-
-            car.BodyTypeNames = bodyTypes;
             return car;
         }
     }

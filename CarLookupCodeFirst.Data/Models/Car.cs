@@ -7,7 +7,12 @@ namespace CarLookupCodeFirst.Data.Models
 {
     public class Car
     {
-        public ICollection<string> BodyTypeNames { get; set; }
+        public Car()
+        {
+            BodyTypes = new List<BodyType>();
+        }
+
+        public virtual ICollection<BodyType> BodyTypes { get; set; }
         public int ID { get; set; }
         public string Maker { get; set; }
         public string Model { get; set; }
